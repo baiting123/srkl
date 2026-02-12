@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐 🎂</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 游戏容器 -->
+    <div class="game-container">
+        <!-- 开始界面 -->
+        <div class="start-screen" id="startScreen">
+            <div class="cat-logo">
+                <img src="cat-birthday.png" alt="可爱小猫" class="cat-image-start">
+            </div>
+            <h1 class="game-title">🎂 生日快乐！🎂</h1>
+            <p class="game-intro">跟着节奏击打妖怪<br>演奏完整的歌曲！</p>
+            
+            <!-- 歌曲选择 -->
+            <div class="song-selection" id="songSelection">
+                <h3 class="selection-title">选择歌曲</h3>
+                <div class="song-buttons">
+                    <button class="song-btn" onclick="selectSong('birthday')">
+                        <span class="song-icon">🎂</span>
+                        <span class="song-name">生日快乐</span>
+                        <span class="song-artist">经典歌曲 · 27音符</span>
+                    </button>
+                    <button class="song-btn" onclick="selectSong('twinkle')">
+                        <span class="song-icon">⭐</span>
+                        <span class="song-name">小星星</span>
+                        <span class="song-artist">经典儿歌 · 21音符</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 难度选择 -->
+            <div class="difficulty-selection" id="difficultySelection" style="display: none;">
+                <h3 class="difficulty-title">选择难度</h3>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn easy-btn" onclick="setDifficulty('easy')">
+                        <span class="btn-icon">😊</span>
+                        <span class="btn-text">简单模式</span>
+                        <span class="btn-desc">正常速度</span>
+                    </button>
+                    <button class="difficulty-btn hard-btn" onclick="setDifficulty('hard')">
+                        <span class="btn-icon">🔥</span>
+                        <span class="btn-text">困难模式</span>
+                        <span class="btn-desc">速度加倍！</span>
+                    </button>
+                </div>
+                <button class="back-btn" onclick="backToSongSelection()">← 返回选歌</button>
+            </div>
+        </div>
+
+        <!-- 游戏界面 -->
+        <div class="game-screen" id="gameScreen">
+            <!-- 祝福语显示区域 -->
+            <div class="wish-display" id="wishDisplay"></div>
+            
+            <!-- 游戏信息 -->
+            <div class="game-info">
+                <div class="score-item">分数: <span id="scoreDisplay">0</span></div>
+                <div class="score-item">连击: <span id="comboDisplay">0</span></div>
+                <div class="score-item">准确率: <span id="accuracyDisplay">100%</span></div>
+            </div>
+
+            <!-- 进度条 -->
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- 游戏画布 -->
+            <canvas id="gameCanvas"></canvas>
+
+            <!-- 操作提示 -->
+            <div class="controls-hint">
+                <p>空格键 / 点击屏幕 击打音符</p>
+                <p>ESC键暂停游戏</p>
+            </div>
+
+            <!-- 暂停界面 -->
+            <div class="pause-screen" id="pauseScreen">
+                <h2>⏸️ 游戏暂停</h2>
+                <button class="pause-btn" onclick="resumeGame()">继续游戏</button>
+                <button class="pause-btn" onclick="quitGame()">退出游戏</button>
+            </div>
+        </div>
+
+        <!-- 通关界面 -->
+        <div class="victory-screen" id="victoryScreen">
+            <div class="cat-victory">
+                <img src="cat-birthday.png" alt="可爱小猫" class="cat-image-victory">
+            </div>
+            <h1 class="victory-title">🎉 你简直是个天才！🎉</h1>
+            <p class="final-score">最终得分: <span id="finalScore">0</span></p>
+            <p class="final-accuracy">准确率: <span id="finalAccuracy">0%</span></p>
+            <p class="max-combo">最高连击: <span id="maxCombo">0</span></p>
+            
+            <!-- 成就显示 -->
+            <div class="achievements-container" id="achievementsContainer">
+                <!-- 成就将通过JavaScript生成 -->
+            </div>
+            
+            <!-- 排行榜 -->
+            <div class="leaderboard-container">
+                <h3 class="leaderboard-title">🏆 排行榜 🏆</h3>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <!-- 排行榜内容将通过JavaScript生成 -->
+                </div>
+            </div>
+            <button class="restart-btn" onclick="restartGame()">🔄 什么你还想再玩一次？这多不好意思呀！</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
